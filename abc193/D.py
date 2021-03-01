@@ -4,8 +4,6 @@ S = input()[:4]
 S = [int(i) for i in S]
 T = input()[:4]
 T = [int(i) for i in T]
-score_s_now = 0
-score_t_now = 0
 nokori = [K] * 10
 for c in S:
     nokori[c] -= 1
@@ -33,9 +31,7 @@ for i in range(1, 10):
         new_t = T[:]
         new_s.append(i)
         new_t.append(j)
-        score_s = score(new_s)
-        score_t = score(new_t)
-        if score_s > score_t:
+        if score(new_s) > score(new_t):
             counter += nokori[i] * nokori[j]
 for i in range(1, 10):
     if nokori[i] < 2:
@@ -44,9 +40,7 @@ for i in range(1, 10):
     new_t = T[:]
     new_s.append(i)
     new_t.append(i)
-    score_s = score(new_s)
-    score_t = score(new_t)
-    if score_s > score_t:
+    if score(new_s) > score(new_t):
         counter += nokori[i] * (nokori[i] - 1)
 
 all_pattern = 9 * K - 8
