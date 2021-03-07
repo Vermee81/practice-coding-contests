@@ -8,13 +8,13 @@ count = 0
 for t in T:
     high = N - 1
     low = 0
-    while low + 1 < high:
+    while low <= high:
         mid = (high + low) // 2
-        if S[mid] == t or S[high] == t or S[low] == t:
+        if S[mid] == t:
             count += 1
             break
-        elif S[mid] > t:
-            high = mid
-        else:
-            low = mid
+        if S[mid] > t:
+            high = mid - 1
+            continue
+        low = mid + 1
 print(count)
