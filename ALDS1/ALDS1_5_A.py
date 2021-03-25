@@ -14,6 +14,9 @@ def rec(i: int, w: int) -> int:
         else:
             return 0
     ans = 0
+    # i個の数を選んだ時に合計がwになるときは1ならないときは0、初期値は-1
+    # dp[i][W] = dp[i-1][W]
+    # dp[i][W] = dp[i-1][W - A_arr[i-1]] + A_arr[i-1]
     if w >= A_arr[i - 1] and rec(i - 1, w - A_arr[i - 1]) == 1: ans = 1
     if rec(i - 1, w) == 1: ans = 1
     dp[i][w] = ans
@@ -22,9 +25,6 @@ def rec(i: int, w: int) -> int:
 
 for q in Q_arr:
     dp = [[-1 for _ in range(q+1)] for _ in range(N+1)]
-    # i個の数を選んだ時に合計がwになるときは1ならないときは0、初期値は-1
-    # dp[i][w] = dp[i-1][w]
-    # dp[i][w] = dp[i-1][w - A_arr[i-1]] + A_arr[i-1]
     answer = 'no'
     if rec(N, q) == 1:
         answer = 'yes'
