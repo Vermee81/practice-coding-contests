@@ -2,41 +2,31 @@
 H, W, X, Y = map(int, input().split())
 graph = [[s for s in input()] for _ in range(H)]
 
-s_x = X - 1
-s_y = Y - 1
+s_r = X - 1
+s_c = Y - 1
 
-count = 1
+# 最初の位置は重複して数えるので3引いておく
+count = -3
 
-p_r = s_x - 1
-p_c = s_y
-
-# search up
-while p_r >= 0 and graph[p_r][p_c] == '.':
+# 下へ探索
+for i in range(s_r, H):
+    if graph[i][s_c] != '.':
+        break
     count += 1
-    p_r -= 1
-
-p_r = s_x + 1
-p_c = s_y
-
-# search down
-while p_r < H and graph[p_r][p_c] == '.':
+# 上へ探索
+for i in range(s_r, -1, -1):
+    if graph[i][s_c] != '.':
+        break
     count += 1
-    p_r += 1
-
-p_r = s_x
-p_c = s_y - 1
-
-# search left
-while p_c >= 0 and graph[p_r][p_c] == '.':
+# 右へ探索
+for i in range(s_c, W):
+    if graph[s_r][i] != '.':
+        break
     count += 1
-    p_c -= 1
-
-p_r = s_x
-p_c = s_y + 1
-
-# search right
-while p_c < W and graph[p_r][p_c] == '.':
+# 左へ探索
+for i in range(s_c, -1, -1):
+    if graph[s_r][i] != '.':
+        break
     count += 1
-    p_c += 1
 
 print(count)
