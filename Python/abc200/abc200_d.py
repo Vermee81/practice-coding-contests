@@ -4,7 +4,7 @@ a_arr = list(map(int, input().split()))
 # 2**8の中で答えの組み合わせがある。Nが8より小さければ全通り探索する
 n = min(N, 8)
 # 同じ余りとなる組み合わせのリストを保存するリスト
-# ans_list[5] = [1, 2, 5] はa_arr[0]+a_arr[1]+a_arr[4]の余りが5になる
+# ans_judge_list[5] = [1, 2, 5] はa_arr[0]+a_arr[1]+a_arr[4]の余りが5になる
 ans_list = [[] for _ in range(200)]
 for bit in range(2**n):
     tmp_sum = 0
